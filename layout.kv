@@ -1,0 +1,109 @@
+
+# create a base Layout
+MDFloatLayout:
+    # create a header text
+    MDLabel:
+        id: header
+        font_size: "38sp"
+        color: "yellow"
+        text: "Tic Tac Toe with KivyMD"
+        halign: "center"
+        pos_hint: {"center_y": .95 }
+
+    MDLabel:
+        id: copyright
+        font_size: "18sp"
+        color: "yellow"
+        text: "2022 © by S3R43o3"
+        halign: "center"
+        pos_hint: {"center_y": .9 }
+
+
+    # create the gamefield
+    MDGridLayout:
+        size_hint: .5,.5
+        pos_hint: {'center_x': .5, 'center_y': .6}
+        cols: 3
+
+        #create the buttons for X or O
+        Button:
+            id: btn1
+            text:''
+            font_size: "45sp"
+            background_color: "green"
+            on_release: app.presser(btn1)
+        
+        Button:
+            id: btn2
+            text:''
+            font_size: "45sp"
+            on_release: app.presser(btn2)
+            background_color: "green"
+    
+        Button:
+            id: btn3
+            text:''
+            font_size: "45sp"
+            on_release: app.presser(btn3)
+            background_color: "green"
+
+        Button:
+            id: btn4
+            text:''
+            font_size: "45sp"
+            on_release: app.presser(btn4)
+            background_color: "green"
+
+        Button:
+            id: btn5
+            text:''
+            font_size: "45sp"
+            on_release: app.presser(btn5)
+            background_color: "green"
+        Button:
+            id: btn6
+            text:''
+            font_size: "45sp"
+            on_release: app.presser(btn6)
+            background_color: "green"
+        Button:
+            id: btn7
+            text:''
+            font_size: "45sp"
+            on_release: app.presser(btn7)
+            background_color: "green"
+        Button:
+            id: btn8
+            text:''
+            font_size: "45sp"
+            on_release: app.presser(btn8)
+            background_color: "green"
+        Button:
+            id: btn9
+            text:''
+            font_size: "45sp"
+            on_release: app.presser(btn9)
+            background_color: "green"
+    
+    # create the score label
+    MDLabel:
+        id: score
+        font_size: "30sp"
+        text: "X goes first!"
+        halign: "center"
+        pos_hint: {"center_y": .25 }
+    
+    MDRaisedButton:
+        id: restart
+        text: "Restart Game"
+        pos_hint: {'center_x': .35, 'center_y': .15}
+        on_release: app.restart()
+    
+    MDRaisedButton:
+        id: exit
+        text: "Exit Game"
+        pos_hint: {'center_x': .65, 'center_y': .15}
+        on_release: app.exit_game()
+        
+
+
