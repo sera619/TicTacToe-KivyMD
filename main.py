@@ -1,3 +1,9 @@
+# This game was made for a example show off how to use kivymd
+# make sure you run "pip install kivymd" before run the main.py file
+# feel free to edit 
+# greetings S3R43o3 © 2022
+
+
 from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivymd.uix.label import MDLabel
