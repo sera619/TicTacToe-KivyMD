@@ -2,23 +2,24 @@
 # make sure you run "pip install kivymd" before run the main.py file
 # feel free to edit 
 # greetings S3R43o3 © 2022
+import kivy
+kivy.require("2.2.0")
 from kivy.lang import Builder
 from kivy.factory import Factory
 from kivymd.app import MDApp
 from kivy.utils import platform
 from kivy.core.window import Window
 
+defaultScreen = "main.kv"
 
 class GameApp(MDApp):
     def build(self):
         # build the basic app and set colorthemes
-        self.defaultScreen = "game_layout.kv"
         self.title = "Tic Tac Toe"
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Orange"
-        return Builder.load_file(self.defaultScreen)
+        return Builder.load_file(defaultScreen)
     
-        
     # define whos turn it is
     turn = "X"
     # track win or lose
@@ -170,10 +171,16 @@ class GameApp(MDApp):
         a.color = "green"
         b.color = "green"
         c.color = "green"
+        a.elevation = 6
+        b.elevation = 6
+        c.elevation = 6
+        c.background_color = "yellow"
+        a.background_color = "yellow"
+        b.background_color = "yellow"
         self.winner = True
         self.disable_all_buttons()
         self.root.ids.score.color = "green"
-        self.root.ids.score.text = f"{a.text} Wins!"
+        self.root.ids.score.text = f"{a.text} Wins!\nClick 'Restart Game' to start a new round."
 
         if (a.text == "X"):
             self.X_win += 1
