@@ -4,28 +4,11 @@
 # greetings S3R43o3 © 2022
 from kivy.lang import Builder
 from kivymd.app import MDApp
-from kivy.uix.screenmanager import ScreenManager, Screen
-
-
-
-class HomeWindow(Screen):
-    pass
-
-class GameWindow(Screen):
-    pass
-
-class WindowManager(ScreenManager):
-    pass
-
-
-
-
 
 class GameApp(MDApp):
     def build(self):
         # build the basic app and set colorthemes
         self.defaultScreen = "game_layout.kv"
-        self.multipleScreen = "home_layout.kv"
         self.title = "Tic Tac Toe with KivyMD & Python"
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Orange"
