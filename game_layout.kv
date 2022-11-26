@@ -18,7 +18,7 @@ MDFloatLayout:
 
     MDLabel:
         id: copyright
-        font_size: "14sp"
+        font_size: "10sp"
         color: "yellow"
         text: "2022 © by S3R43o3"
         halign: "center"
@@ -27,7 +27,7 @@ MDFloatLayout:
 
     # create the gamefield
     MDGridLayout:
-        size_hint: .5,.5
+        size_hint: .75,.5
         pos_hint: {'center_x': .5, 'center_y': .6}
         cols: 3
         rows: 3
@@ -103,6 +103,8 @@ MDFloatLayout:
     MDBoxLayout:
         orientation: 'horizontal'
         adaptive_size: True
+        spacing: '3sp'
+        padding: ('3sp', '3sp', '3sp', '3sp')
         pos_hint: {"center_x": .5}
         MDRaisedButton:
             id: restart
@@ -114,7 +116,6 @@ MDFloatLayout:
             id: resetScore
             font_size: "12sp"
             text: "Reset Score"
-            halign: "center"
             #pos_hint: {'center_x': .65, 'center_y': .15}
             on_release: app.reset_score()
         
