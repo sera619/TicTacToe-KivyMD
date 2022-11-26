@@ -15,7 +15,10 @@
 >```CMD
 > python .\main.py
 >```
+>
+> it is also possible to run this game on your Android device. if you want this just open a new issue with your suggestion and i will upload a .apk file
+
 
 ## Preview ##
-
+![mobile preview](mobile-preview.png)
 ![preview image](preview.png)

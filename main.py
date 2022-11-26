@@ -18,9 +18,6 @@ class GameApp(MDApp):
         self.theme_cls.primary_palette = "Orange"
         return Builder.load_file(self.defaultScreen)
     
-    def on_start(self):
-        self.root.size = (300, 600)
-        Window.size = (self.root.width, self.root.height)
         
     # define whos turn it is
     turn = "X"
