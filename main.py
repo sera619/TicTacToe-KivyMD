@@ -90,6 +90,7 @@ class GameApp(MDApp):
         self.root.ids.btn7.disabled == True and \
         self.root.ids.btn8.disabled == True and \
         self.root.ids.btn9.disabled == True:
+            self.root.ids.score.color = "orange"
             self.root.ids.score.text = "IT'S A TIE!!"
 
     def disable_all_buttons(self):
@@ -161,9 +162,9 @@ class GameApp(MDApp):
     
     # end the current game (notice NOT exit the game, just end the "session")
     def end_game(self, a, b, c):
-        a.color = "red"
-        b.color = "red"
-        c.color = "red"
+        a.color = "green"
+        b.color = "green"
+        c.color = "green"
         self.winner = True
         self.disable_all_buttons()
         self.root.ids.score.color = "green"
@@ -180,6 +181,8 @@ class GameApp(MDApp):
         app.stop()
         exit(0)
 
+    def reset_score(self):
+        self.root.ids.game.text = "X-Wins: 0 | O-Wins: 0"
 
 if __name__=="__main__":
     app = GameApp()

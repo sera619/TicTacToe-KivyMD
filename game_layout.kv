@@ -48,8 +48,8 @@ MDFloatLayout:
             id: btn3
             text:''
             font_size: "45sp"
-            on_release: app.presser(btn3)
             background_color: "green"
+            on_release: app.presser(btn3)
 
         Button:
             id: btn4
@@ -97,17 +97,27 @@ MDFloatLayout:
         halign: "center"
         pos_hint: {"center_y": .25 }
     
-    MDRaisedButton:
-        id: restart
-        text: "Restart Game"
-        pos_hint: {'center_x': .35, 'center_y': .15}
-        on_release: app.restart()
-    
-    MDRaisedButton:
-        id: exit
-        text: "Exit Game"
-        pos_hint: {'center_x': .65, 'center_y': .15}
-        on_release: app.exit_game()
+    MDGridLayout:
+        size_hint: .5, .5
+        cols: 3
+        spacing: '10dp'
+        pos_hint: {'center_x': .55 ,'center_y': -.1}
+        MDRaisedButton:
+            id: restart
+            text: "Restart Game"
+            on_release: app.restart()
+        
+        MDRaisedButton:
+            id: resetScore
+            text: "Reset Score"
+            #pos_hint: {'center_x': .65, 'center_y': .15}
+            on_release: app.reset_score()
+        
+        MDRaisedButton:
+            id: exit
+            text: "Exit Game"
+            #pos_hint: {'center_x': .65, 'center_y': .15}
+            on_release: app.exit_game()
 
     MDLabel:
         id: game
