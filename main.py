@@ -4,38 +4,59 @@
 # greetings S3R43o3 © 2022
 from kivy.lang import Builder
 from kivymd.app import MDApp
+from kivy.uix.screenmanager import ScreenManager, Screen
+
+
+
+class HomeWindow(Screen):
+    pass
+
+class GameWindow(Screen):
+    pass
+
+class WindowManager(ScreenManager):
+    pass
+
+
+
+
 
 class GameApp(MDApp):
     def build(self):
         # build the basic app and set colorthemes
+        self.defaultScreen = "game_layout.kv"
+        self.multipleScreen = "home_layout.kv"
         self.title = "Tic Tac Toe with KivyMD & Python"
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Orange"
-        return Builder.load_file('layout.kv')
+        return Builder.load_file(self.defaultScreen)
         
     # define whos turn it is
     turn = "X"
     # track win or lose
     winner = False
+    # track win count
+    X_win = 0
+    O_win = 0
 
     # handler for pressing the game buttons
     # it will change the turn to next player and colorize/disable the button
     def presser(self, btn):
         if self.turn == "X":
-            btn.color = 1 , 0 , 0 , 1
+            btn.disabled_color = "red"
             btn.background_color = 1 , 0 , 0 , .2
             btn.text = "X"
             self.turn = "O"
-            self.root.ids.score.color = 0, 0, 1, 1
+            self.root.ids.score.color = "blue"
             self.root.ids.score.text = "O´s Turn!"
             btn.disabled = True
         else:
-            btn.color = 0 , 0 , 1 , 1
             btn.background_color = 0 , 0 , 1 , .2
             btn.text = "O"
             self.turn = "X"
-            self.root.ids.score.color = 1, 0, 0, 1
+            self.root.ids.score.color = "red"
             self.root.ids.score.text = "X´s Turn!"
+            btn.disabled_color = "blue"
             btn.disabled = True
 
         self.win()
@@ -47,30 +68,31 @@ class GameApp(MDApp):
         if self.root.ids.btn1.text != "" and self.root.ids.btn1.text == self.root.ids.btn2.text and self.root.ids.btn2.text == self.root.ids.btn3.text:
             return self.end_game(self.root.ids.btn1, self.root.ids.btn2, self.root.ids.btn3)
 
-        if self.root.ids.btn4.text != "" and self.root.ids.btn4.text == self.root.ids.btn5.text and self.root.ids.btn5.text == self.root.ids.btn6.text:
+        elif self.root.ids.btn4.text != "" and self.root.ids.btn4.text == self.root.ids.btn5.text and self.root.ids.btn5.text == self.root.ids.btn6.text:
             return self.end_game(self.root.ids.btn4, self.root.ids.btn5, self.root.ids.btn6)
 
-        if self.root.ids.btn7.text != "" and self.root.ids.btn7.text == self.root.ids.btn8.text and self.root.ids.btn8.text == self.root.ids.btn9.text:
+        elif self.root.ids.btn7.text != "" and self.root.ids.btn7.text == self.root.ids.btn8.text and self.root.ids.btn8.text == self.root.ids.btn9.text:
             return self.end_game(self.root.ids.btn7, self.root.ids.btn8, self.root.ids.btn9)
 
         # Down
-        if self.root.ids.btn1.text != "" and self.root.ids.btn1.text == self.root.ids.btn4.text and self.root.ids.btn4.text == self.root.ids.btn7.text:
+        elif self.root.ids.btn1.text != "" and self.root.ids.btn1.text == self.root.ids.btn4.text and self.root.ids.btn4.text == self.root.ids.btn7.text:
             return self.end_game(self.root.ids.btn1, self.root.ids.btn4, self.root.ids.btn7)
 
-        if self.root.ids.btn2.text != "" and self.root.ids.btn2.text == self.root.ids.btn5.text and self.root.ids.btn5.text == self.root.ids.btn8.text:
+        elif self.root.ids.btn2.text != "" and self.root.ids.btn2.text == self.root.ids.btn5.text and self.root.ids.btn5.text == self.root.ids.btn8.text:
             return self.end_game(self.root.ids.btn2, self.root.ids.btn5, self.root.ids.btn8)
 
-        if self.root.ids.btn3.text != "" and self.root.ids.btn3.text == self.root.ids.btn6.text and self.root.ids.btn6.text == self.root.ids.btn9.text:
+        elif self.root.ids.btn3.text != "" and self.root.ids.btn3.text == self.root.ids.btn6.text and self.root.ids.btn6.text == self.root.ids.btn9.text:
             return self.end_game(self.root.ids.btn3, self.root.ids.btn6, self.root.ids.btn9)
 
         # Diagonal 
-        if self.root.ids.btn1.text != "" and self.root.ids.btn1.text == self.root.ids.btn5.text and self.root.ids.btn5.text == self.root.ids.btn9.text:
+        elif self.root.ids.btn1.text != "" and self.root.ids.btn1.text == self.root.ids.btn5.text and self.root.ids.btn5.text == self.root.ids.btn9.text:
             return self.end_game(self.root.ids.btn1, self.root.ids.btn5, self.root.ids.btn9)
 
-        if self.root.ids.btn3.text != "" and self.root.ids.btn3.text == self.root.ids.btn5.text and self.root.ids.btn5.text == self.root.ids.btn7.text:
+        elif self.root.ids.btn3.text != "" and self.root.ids.btn3.text == self.root.ids.btn5.text and self.root.ids.btn5.text == self.root.ids.btn7.text:
             return self.end_game(self.root.ids.btn3, self.root.ids.btn5, self.root.ids.btn7)
 
-        self.no_winner()
+        else:
+            self.no_winner()
 
 
     # check if its a tie
@@ -156,14 +178,20 @@ class GameApp(MDApp):
     
     # end the current game (notice NOT exit the game, just end the "session")
     def end_game(self, a, b, c):
-        self.winner = True
         a.color = "red"
         b.color = "red"
         c.color = "red"
+        self.winner = True
         self.disable_all_buttons()
         self.root.ids.score.color = "green"
         self.root.ids.score.text = f"{a.text} Wins!"
-    
+
+        if (a.text == "X"):
+            self.X_win += 1
+        else:
+            self.O_win += 1
+        self.root.ids.game.text = f"X-Wins: {self.X_win} | O-Wins: {self.O_win}"
+
     # exit the app
     def exit_game(self):
         app.stop()

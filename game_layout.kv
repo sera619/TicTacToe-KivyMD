@@ -27,6 +27,7 @@ MDFloatLayout:
         size_hint: .5,.5
         pos_hint: {'center_x': .5, 'center_y': .6}
         cols: 3
+        rows: 3
 
         #create the buttons for X or O
         Button:
@@ -40,8 +41,8 @@ MDFloatLayout:
             id: btn2
             text:''
             font_size: "45sp"
-            on_release: app.presser(btn2)
             background_color: "green"
+            on_release: app.presser(btn2)
     
         Button:
             id: btn3
@@ -107,6 +108,14 @@ MDFloatLayout:
         text: "Exit Game"
         pos_hint: {'center_x': .65, 'center_y': .15}
         on_release: app.exit_game()
+
+    MDLabel:
+        id: game
+        font_size: "16sp"
+        color: "grey"
+        text: "X-Wins: 0 | O-Wins: 0"
+        halign: "center"
+        pos_hint: {"center_x": .5, "center_y": .325 }
         
 
 
