@@ -2,26 +2,23 @@
 # make sure you run "pip install kivymd" before run the main.py file
 # feel free to edit 
 # greetings S3R43o3 © 2022
-
-
 from kivy.lang import Builder
 from kivymd.app import MDApp
-from kivymd.uix.label import MDLabel
-
-
 
 class GameApp(MDApp):
     def build(self):
+        # build the basic app and set colorthemes
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Orange"
         return Builder.load_file('layout.kv')
-    
         
     # define whos turn it is
     turn = "X"
     # track win or lose
     winner = False
 
+    # handler for pressing the game buttons
+    # it will change the turn to next player and colorize/disable the button
     def presser(self, btn):
         if self.turn == "X":
             btn.color = 1 , 0 , 0 , 1
@@ -40,6 +37,8 @@ class GameApp(MDApp):
 
         self.win()
 
+
+    # handler to check if a win is true
     def win(self):
        # Across
         if self.root.ids.btn1.text != "" and self.root.ids.btn1.text == self.root.ids.btn2.text and self.root.ids.btn2.text == self.root.ids.btn3.text:
@@ -70,6 +69,8 @@ class GameApp(MDApp):
 
         self.no_winner()
 
+
+    # check if its a tie
     def no_winner(self):
         if self.winner == False and \
         self.root.ids.btn1.disabled == True and \
@@ -115,6 +116,7 @@ class GameApp(MDApp):
         self.root.ids.btn8.background_color = "green"
         self.root.ids.btn9.background_color = "green"
 
+
     def restart(self):
         # reset btn colors
         self.reset_btn_colors()
@@ -143,15 +145,13 @@ class GameApp(MDApp):
 
         # reset score text
         self.root.ids.score.color = "white"
-
         self.root.ids.score.text = "X goes first!"
-
         # reset winner
         self.winner = False
-
         # reset turn
         self.turn = "X"
     
+    # end the current game (notice NOT exit the game, just end the "session")
     def end_game(self, a, b, c):
         self.winner = True
         a.color = "red"
@@ -161,6 +161,7 @@ class GameApp(MDApp):
         self.root.ids.score.color = "green"
         self.root.ids.score.text = f"{a.text} Wins!"
     
+    # exit the app
     def exit_game(self):
         app.stop()
         exit(0)
