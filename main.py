@@ -8,6 +8,7 @@ from kivymd.app import MDApp
 class GameApp(MDApp):
     def build(self):
         # build the basic app and set colorthemes
+        self.title = "Tic Tac Toe with KivyMD & Python"
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Orange"
         return Builder.load_file('layout.kv')
@@ -25,6 +26,7 @@ class GameApp(MDApp):
             btn.background_color = 1 , 0 , 0 , .2
             btn.text = "X"
             self.turn = "O"
+            self.root.ids.score.color = 0, 0, 1, 1
             self.root.ids.score.text = "O´s Turn!"
             btn.disabled = True
         else:
@@ -32,6 +34,7 @@ class GameApp(MDApp):
             btn.background_color = 0 , 0 , 1 , .2
             btn.text = "O"
             self.turn = "X"
+            self.root.ids.score.color = 1, 0, 0, 1
             self.root.ids.score.text = "X´s Turn!"
             btn.disabled = True
 
