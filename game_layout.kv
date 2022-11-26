@@ -1,13 +1,16 @@
 
 
 # create a base Layout
+
 MDFloatLayout:
     # MDTopAppBar:
     #     title: "App bar"
     # create a header text
+
+    adaptive_size: True
     MDLabel:
         id: header
-        font_size: "38sp"
+        font_size: "24sp"
         color: "yellow"
         text: "Tic Tac Toe with KivyMD"
         halign: "center"
@@ -92,29 +95,32 @@ MDFloatLayout:
     # create the score label
     MDLabel:
         id: score
-        font_size: "30sp"
+        font_size: "18sp"
         text: "X goes first!"
         halign: "center"
         pos_hint: {"center_y": .25 }
     
-    MDGridLayout:
-        size_hint: .5, .5
-        cols: 3
-        spacing: '10dp'
-        pos_hint: {'center_x': .55 ,'center_y': -.1}
+    MDBoxLayout:
+        orientation: 'horizontal'
+        adaptive_size: True
+        pos_hint: {"center_x": .5}
         MDRaisedButton:
             id: restart
+            font_size: "12sp"
             text: "Restart Game"
             on_release: app.restart()
         
         MDRaisedButton:
             id: resetScore
+            font_size: "12sp"
             text: "Reset Score"
+            halign: "center"
             #pos_hint: {'center_x': .65, 'center_y': .15}
             on_release: app.reset_score()
         
         MDRaisedButton:
             id: exit
+            font_size: "12sp"
             text: "Exit Game"
             #pos_hint: {'center_x': .65, 'center_y': .15}
             on_release: app.exit_game()

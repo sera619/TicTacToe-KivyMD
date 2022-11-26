@@ -3,16 +3,22 @@
 # feel free to edit 
 # greetings S3R43o3 © 2022
 from kivy.lang import Builder
+from kivy.factory import Factory
 from kivymd.app import MDApp
+
 
 class GameApp(MDApp):
     def build(self):
         # build the basic app and set colorthemes
         self.defaultScreen = "game_layout.kv"
-        self.title = "Tic Tac Toe with KivyMD & Python"
+        self.title = "Tic Tac Toe"
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Orange"
         return Builder.load_file(self.defaultScreen)
+    
+    def on_start(self):
+        self.root.size = (300, 600)
+        pass
         
     # define whos turn it is
     turn = "X"
