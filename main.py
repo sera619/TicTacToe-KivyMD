@@ -5,6 +5,8 @@
 from kivy.lang import Builder
 from kivy.factory import Factory
 from kivymd.app import MDApp
+from kivy.utils import platform
+from kivy.core.window import Window
 
 
 class GameApp(MDApp):
@@ -18,6 +20,18 @@ class GameApp(MDApp):
     
     def on_start(self):
         self.root.size = (300, 600)
+        Window.size = (300, 600)
+        print(Window.size)
+        # if platform in ('android', 'ios'):
+        #     from kivy.uix.scrollview import ScrollView
+
+        #     app_view = view
+        #     app_view.size = (960, 540)
+        #     app_view.size_hint = (None, None)
+
+        #     view = ScrollView(size=Window.size)
+        #     view.effect_cls = ScrollEffect
+        #     view.add_widget(app_view)
         pass
         
     # define whos turn it is
