@@ -4,13 +4,13 @@
 > Feel free to edit
 >
 > Please Notice:
-> you have to make sure kivymd is installed:
+> you have to make sure you have all dependecies installed to do this open a shell and enter:
 >
 > ```CMD
-> pip install kivymd
+> pip install -r requirements.txt
 >```
 >
->after installing kivymd just run the main.py with:
+>after installing dependecies just run the main.py with:
 >
 >```CMD
 > python .\main.py
