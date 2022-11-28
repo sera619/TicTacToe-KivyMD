@@ -3,14 +3,14 @@
 # feel free to edit 
 # greetings S3R43o3 © 2022
 import kivy
-kivy.require("2.2.0")
+kivy.require("2.1.0")
 from kivy.lang import Builder
 from kivy.factory import Factory
 from kivymd.app import MDApp
 from kivy.utils import platform
 from kivy.core.window import Window
 
-defaultScreen = "main.kv"
+defaultScreen = "layoutmain.kv"
 
 class GameApp(MDApp):
     def build(self):
