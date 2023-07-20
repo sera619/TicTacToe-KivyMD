@@ -19,7 +19,7 @@ pexpect==4.8.0
 Pillow==9.3.0
 platformdirs==2.5.4
 ptyprocess==0.7.0
-Pygments==2.13.0
+Pygments==2.15.0
 python-for-android==2022.9.4
 pytoml==0.1.21
 requests==2.31.0
