@@ -26,5 +26,5 @@ requests==2.32.4
 sh==1.14.3
 toml==0.10.2
 urllib3==2.6.0
-virtualenv==20.16.7
+virtualenv==20.26.6
 zipp==3.11.0
