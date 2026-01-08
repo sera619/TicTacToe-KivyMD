@@ -25,6 +25,6 @@ pytoml==0.1.21
 requests==2.32.4
 sh==1.14.3
 toml==0.10.2
-urllib3==2.6.0
+urllib3==2.6.3
 virtualenv==20.26.6
 zipp==3.11.0
